@@ -1,13 +1,16 @@
 class Solution {
-    public boolean hasDuplicate(int[] nums) {
-        Map<Integer,Integer> numMap = new HashMap<>();
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> sumMap = new HashMap<>();
 
-        for(int num : nums){
-            if (numMap.containsKey(num)){
-                return true;
+        for(int i = 0 ; i< nums.length; i ++){
+            int diff = target - nums[i];
+            if (sumMap.containsKey(diff)){
+                return new int[]{ sumMap.get(diff),i};
             }
-            else numMap.put(num,1);
+            else{
+                sumMap.put(nums[i], i);
+            }
         }
-        return false;
+        return new int[]{};
     }
 }
